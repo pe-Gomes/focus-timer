@@ -1,0 +1,253 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --bg-color-light: #FFFFFF;
+  --bg-color-dark: #121214;
+  --fill-dark-mode: #C4C4CC;
+
+  --slider-light: #FFFFFF;
+  --slider-dark: #323238;         
+
+  --text-color-dark: #323238;
+  --text-color-light: #FFFFFF; 
+
+  --card-color-regular: hsl(240, 9%, 89%);
+  --card-color-dark: hsl(240, 6%, 17%);
+
+  --card-rain: hsl(194, 97%, 31%);
+  --card-florest: hsl(155, 97%, 31%);
+  --card-cafe: hsl(58, 97%, 40%);
+  --card-fireplace: hsl(20, 97%, 32%);
+
+  --card-rain-dark: hsl(195, 74%, 15%);
+  --card-florest-dark: hsl(155, 70%, 15%);
+  --card-cafe-dark: hsl(60, 74%, 22%);
+  --card-fireplace-dark: hsl(9, 75%, 17%);
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-color-dark);
+
+  transition: 200ms;
+}
+
+button {
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+header {
+  display: grid;
+  justify-content: right;
+
+  margin: 6rem 6rem 0 0;
+}
+
+.hide {
+  display: none;
+}
+
+.dark-mode,
+.light-mode {
+  width: 5rem;
+  height: 5rem;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(1rem, 1rem + 10vw, 19rem);
+
+  min-height: 80vh;
+}
+
+#timer {
+  font-size: clamp(9rem, 9rem + 8vw, 12.6rem);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.display {
+  display: flex;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(1rem, 1rem + 2vw, 4rem);
+}
+
+#cards-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.2rem;
+}
+
+.single-card button {
+  background-color: var(--card-color-regular);
+  border-radius: 2.4rem;
+
+  width: 13.8rem;
+  height: 15.2rem;
+
+  transition: 400ms;
+}
+
+.card-dark-mode button {
+  background-color: var(--card-color-dark)
+}
+
+#cards-wrapper button:hover {
+  transform: scale(1.05);
+}
+
+#cards-wrapper button:hover svg path {
+  fill: var(--bg-color-light);
+}
+
+#cards-wrapper .florest:hover,
+#cards-wrapper .florest.active  {
+  background-color: var(--card-florest);
+}
+
+#cards-wrapper .florest:hover.florest-dark,
+#cards-wrapper .florest.active.florest-dark {
+  background-color: var(--card-florest-dark);
+}
+
+#cards-wrapper .rain:hover,
+#cards-wrapper .rain.active {
+  background-color: var(--card-rain);
+}
+
+#cards-wrapper .rain:hover.rain-dark,
+#cards-wrapper .rain.active.rain-dark {
+  background-color: var(--card-rain-dark);
+}
+
+#cards-wrapper .cafe:hover,
+#cards-wrapper .cafe.active {
+  background-color: var(--card-cafe);
+}
+
+#cards-wrapper .cafe:hover.cafe-dark,
+#cards-wrapper .cafe.active.cafe-dark {
+  background-color: var(--card-cafe-dark);
+}
+
+#cards-wrapper .fireplace:hover,
+#cards-wrapper .fireplace.active {
+  background-color: var(--card-fireplace);
+}
+
+#cards-wrapper .fireplace:hover.fireplace-dark,
+#cards-wrapper .fireplace.active.fireplace-dark {
+  background-color: var(--card-fireplace-dark);
+}
+
+.single-card {
+  position: relative;
+}
+
+.single-card svg {
+  margin-bottom: 3.2rem;
+
+  width: 5.2rem;
+  height: 5.6rem;
+}
+
+.single-card input {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+
+  width: 9rem;
+  height: 4px;
+}
+
+.single-card input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--slider-dark);
+  border: none;
+  border-radius: 50%;
+  margin-top: calc(max((1em - 1px - 1px) * 0.5,0px) - 2em * 0.45);
+}
+
+.single-card.light-slider input::-webkit-slider-thumb {
+  background: var(--slider-light);
+}
+
+.single-card input:focus {
+  outline: none;
+}
+
+.single-card input::-webkit-slider-runnable-track {
+  height: 4px;
+  width: 9rem;
+  border: none;
+  border-radius: 0.5em;
+  background: var(--slider-dark);
+  box-shadow: none;
+}
+
+.single-card.light-slider input::-webkit-slider-runnable-track {
+  background: var(--slider-light);
+}
+
+.light-icon button svg path {
+  fill: var(--fill-dark-mode);
+}
+
+#cards-wrapper button:hover .light-icon svg path {
+  fill: #FFFFFF;
+}
+
+@media (max-width: 760px) 
+{
+  body {
+    padding: 3rem;
+  }
+
+  header {
+    justify-content: center;
+    margin: 0;
+  }
+
+  main {
+    flex-direction: column;
+  }
+
+  #cards-wrapper {
+    gap: 1rem;
+  }
+
+  #cards-wrapper button {
+    transform: scale(0.85);
+  }
+
+  #cards-wrapper button:hover {
+    transform: scale(0.9);
+  }
+
+  .single-card input {
+    transform: scale(0.85);
+  }
+}
